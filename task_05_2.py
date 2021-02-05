@@ -15,6 +15,7 @@ num_1  = list(input('Введите первое шестнадцатиричн�
 num_2  = list(input('Введите второе шестнадцатиричное число: '))
 # print(number_1, number_2)
 
+arr_spam = []
 num_res = []
 next_dig = 0
 
@@ -26,17 +27,28 @@ else:
     len_res = len(num_2) + 1
 
 for i in range(len_res):
-    dig_1 = num_1[len(num_1) - 1 - i]
-    dig_2 = num_2[len(num_2) - 1 - i]
+    if len(num_1) - i > 0:
+        dig_1 = num_1[len(num_1) - 1 - i]
+    else:
+        dig_1 = '0'
+    if len(num_2) - i > 0:
+        dig_2 = num_2[len(num_2) - 1 - i]
+    else:
+        dig_2 = '0'
     print(dig_1, dig_2)
 
     if digits.index(dig_1) + digits.index(dig_2) < BASE - 1:
-        num_res.append(digits[digits.index(dig_1) + digits.index(dig_2) + next_dig])
-        print(num_res)
+        arr_spam.append(digits[digits.index(dig_1) + digits.index(dig_2) + next_dig])
+        print(arr_spam)
         next_dig = 0
     else:
-        num_res.append(digits[digits.index(dig_1) + digits.index(dig_2) - BASE + next_dig])
-        print(num_res)
+        arr_spam.append(digits[digits.index(dig_1) + digits.index(dig_2) - BASE + next_dig])
+        print(arr_spam)
         next_dig = 1
+
+print(arr_spam)
+
+for i in range(len_res):
+    num_res.append(arr_spam[len_res - 1 - i])
 
 print(num_res)
