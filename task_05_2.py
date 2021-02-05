@@ -15,7 +15,6 @@ num_1  = list(input('Введите первое число в шестнадц�
 num_2  = list(input('Введите второе число в шестнадцатиричном представлении: '))
 # print(number_1, number_2)
 
-arr_spam = []
 num_res = []
 next_dig = 0
 
@@ -35,17 +34,12 @@ for i in range(len_res):
     # print(dig_1, dig_2)
 
     if digits.index(dig_1) + digits.index(dig_2) < BASE - 1:
-        arr_spam.append(digits[digits.index(dig_1) + digits.index(dig_2) + next_dig])
-        # print(arr_spam)
+        num_res.append(digits[digits.index(dig_1) + digits.index(dig_2) + next_dig])
         next_dig = 0
     else:
-        arr_spam.append(digits[digits.index(dig_1) + digits.index(dig_2) - BASE + next_dig])
-        # print(arr_spam)
+        num_res.append(digits[digits.index(dig_1) + digits.index(dig_2) - BASE + next_dig])
         next_dig = 1
 
-# print(arr_spam)
-
-for i in range(len_res):
-    num_res.append(arr_spam[len_res - 1 - i])
+num_res.reverse()
 
 print(num_res)
