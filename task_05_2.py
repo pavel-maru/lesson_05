@@ -35,18 +35,18 @@ for i in range(len_res):
         dig_2 = num_2[len(num_2) - 1 - i]
     else:
         dig_2 = '0'
-    print(dig_1, dig_2)
+    # print(dig_1, dig_2)
 
     if digits.index(dig_1) + digits.index(dig_2) < BASE - 1:
         arr_spam.append(digits[digits.index(dig_1) + digits.index(dig_2) + next_dig])
-        print(arr_spam)
+        # print(arr_spam)
         next_dig = 0
     else:
         arr_spam.append(digits[digits.index(dig_1) + digits.index(dig_2) - BASE + next_dig])
-        print(arr_spam)
+        # print(arr_spam)
         next_dig = 1
 
-print(arr_spam)
+# print(arr_spam)
 
 for i in range(len_res):
     num_res.append(arr_spam[len_res - 1 - i])
