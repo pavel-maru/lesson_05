@@ -35,10 +35,14 @@ for i in range(len_res):
 
     if digits.index(dig_1) + digits.index(dig_2) < BASE - 1:
         num_res.append(digits[digits.index(dig_1) + digits.index(dig_2) + next_dig])
+        # print(num_res)
         next_dig = 0
     else:
         num_res.append(digits[digits.index(dig_1) + digits.index(dig_2) - BASE + next_dig])
+        # print(num_res)
         next_dig = 1
+
+# print(num_res)
 
 num_res.reverse()
 
