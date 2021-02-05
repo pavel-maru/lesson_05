@@ -11,8 +11,8 @@ BASE = 16
 digits = ['0', '1', '2', '3', '4', '5','6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
 
 print('Программа суммирования двух шестнадцатиричных чисел.')
-num_1  = list(input('Введите первое шестнадцатиричное число: '))
-num_2  = list(input('Введите второе шестнадцатиричное число: '))
+num_1  = list(input('Введите первое число в шестнадцатиричном представлении: '))
+num_2  = list(input('Введите второе число в шестнадцатиричном представлении: '))
 # print(number_1, number_2)
 
 arr_spam = []
@@ -21,10 +21,7 @@ next_dig = 0
 
 # print(digits.index(num_1[len(num_1) - 1]))
 
-if len(num_1) > len(num_2):
-    len_res = len(num_1) + 1
-else:
-    len_res = len(num_2) + 1
+len_res = max(len(num_1), len(num_2)) + 1
 
 for i in range(len_res):
     if len(num_1) - i > 0:
