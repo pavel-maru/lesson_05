@@ -5,18 +5,21 @@
 # как [‘A’, ‘2’] и [‘C’, ‘4’, ‘F’] соответственно. Сумма чисел из примера:
 # [‘C’, ‘F’, ‘1’], произведение - [‘7’, ‘C’, ‘9’, ‘F’, ‘E’].
 
-from collections import namedtuple
+from collections import deque
 
 BASE = 16
-digits = ['0', '1', '2', '3', '4', '5','6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+HEX_DIGITS = ('0', '1', '2', '3', '4', '5','6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F')
+
+# print(type(HEX_DIGITS), HEX_DIGITS)
+
+num_res = deque()
+# print(type(num_res))
+overflow = 0
 
 print('Программа суммирования двух шестнадцатиричных чисел.')
-num_1  = list(input('Введите первое число в шестнадцатиричном представлении: '))
-num_2  = list(input('Введите второе число в шестнадцатиричном представлении: '))
+num_1  = deque(input('Введите первое число в шестнадцатиричном представлении (только цифры от 0 до F): ').upper())
+num_2  = deque(input('Введите второе число в шестнадцатиричном представлении (только цифры от 0 до F): ').upper())
 # print(number_1, number_2)
-
-num_res = []
-next_dig = 0
 
 # print(digits.index(num_1[len(num_1) - 1]))
 
@@ -33,17 +36,25 @@ for i in range(len_res):
         dig_2 = '0'
     # print(dig_1, dig_2)
 
-    if digits.index(dig_1) + digits.index(dig_2) < BASE - 1:
-        num_res.append(digits[digits.index(dig_1) + digits.index(dig_2) + next_dig])
+    if HEX_DIGITS.index(dig_1) + HEX_DIGITS.index(dig_2) < BASE - 1:
+        num_res.appendleft(HEX_DIGITS[HEX_DIGITS.index(dig_1) + HEX_DIGITS.index(dig_2) + overflow])
         # print(num_res)
-        next_dig = 0
+        overflow = 0
     else:
-        num_res.append(digits[digits.index(dig_1) + digits.index(dig_2) - BASE + next_dig])
+        num_res.appendleft(HEX_DIGITS[HEX_DIGITS.index(dig_1) + HEX_DIGITS.index(dig_2) - BASE + overflow])
         # print(num_res)
-        next_dig = 1
+        overflow = 1
 
 # print(num_res)
 
-num_res.reverse()
-
+# num_res.reverse()
 print(num_res)
+
+if num_res[0] == '0':
+    del num_res[0]
+print(num_res)
+
+num_1 = ''.join(num_1)
+num_2 = ''.join(num_2)
+num_res = ''.join(num_res)
+print(f'{num_1} + {num_2} = {num_res}')
