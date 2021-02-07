@@ -40,23 +40,24 @@ for i in range(len_res):
 
     if index_ < BASE:
         num_res.appendleft(HEX_DIGITS[index_])
-        print(num_res)
+        # print(num_res)
         overflow = 0
     else:
         num_res.appendleft(HEX_DIGITS[index_ - BASE])
-        print(num_res)
+        # print(num_res)
         overflow = 1
 
 # print(num_res)
 
 # num_res.reverse()
-print(num_res)
+# print(num_res)
 
 if num_res[0] == '0':
     del num_res[0]
-print(num_res)
+# print(num_res)
 
 num_1 = ''.join(num_1)
 num_2 = ''.join(num_2)
 num_res = ''.join(num_res)
 print(f'{num_1} + {num_2} = {num_res}')
+
