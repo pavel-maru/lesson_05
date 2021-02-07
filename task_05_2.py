@@ -36,14 +36,14 @@ for i in range(len_res):
         dig_2 = '0'
     # print(dig_1, dig_2)
 
-    index_spam = HEX_DIGITS.index(dig_1) + HEX_DIGITS.index(dig_2) + overflow
+    index_ = HEX_DIGITS.index(dig_1) + HEX_DIGITS.index(dig_2) + overflow
 
-    if index_spam < BASE:
-        num_res.appendleft(HEX_DIGITS[index_spam])
+    if index_ < BASE:
+        num_res.appendleft(HEX_DIGITS[index_])
         print(num_res)
         overflow = 0
     else:
-        num_res.appendleft(HEX_DIGITS[index_spam - BASE])
+        num_res.appendleft(HEX_DIGITS[index_ - BASE])
         print(num_res)
         overflow = 1
 
