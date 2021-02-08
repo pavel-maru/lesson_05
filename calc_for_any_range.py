@@ -9,6 +9,8 @@ BASE = int(input('Введите размерность системы счис�
 
 # формируем набор символов (цифр)
 DEC = 10
+STEP = 10
+
 if BASE <= DEC:
     DIGITS = [str(i) for i in range(BASE)]
 else:
@@ -23,12 +25,18 @@ else:
 DIGITS = tuple(DIGITS)
 # print(type(DIGITS), DIGITS)
 
-print(f'\nПоследовательность символов (цифр) в данной размерности:\n', ', '.join(DIGITS))
+print(f'\nПоследовательность символов (цифр) в данной размерности:')
+for i, digit in enumerate(DIGITS):
+    print(digit, end='  ')
+    if (i + 1) % STEP == 0:
+        print()
+# print(', '.join(DIGITS))
 
 num_res = deque()
 # print(type(num_res))
 overflow = 0
 
+print()
 num_1  = deque(input('\nВведите первое число в выбранном представлении: ').upper())
 num_2  = deque(input('\nВведите второе число в выбранном представлении: ').upper())
 # print(number_1, number_2)
@@ -62,15 +70,17 @@ for i in range(len_res):
 # num_res.reverse()
 # print(num_res)
 # удаляем незначащий ноль в начале числа
-if num_res[0] == '0':
-    del num_res[0]
-# print(num_res)
-
+num_res.popleft() if num_res[0] == '0' else num_res
+# if num_res[0] == '0':
+#     # del num_res[0]
+#     num_res.popleft()
 # del num_res[0] if num_res[0] == '0'
+# print(num_res)
 
 # преобразуем массивы чисел в строчный вид и выводим
 # num_1 = ''.join(num_1)
 # num_2 = ''.join(num_2)
 # num_res = ''.join(num_res)
 # print(f'{num_1} + {num_2} = {num_res}')
-print('\n', ''.join(num_1), '+', ''.join(num_2), '=', ''.join(num_res))
+print()
+print(''.join(num_1), '+', ''.join(num_2), '=', ''.join(num_res))
