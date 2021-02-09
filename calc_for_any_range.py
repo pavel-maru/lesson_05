@@ -16,32 +16,38 @@ if BASE <= DEC:
 else:
     DIGITS = [str(i) for i in range(DEC)]
     # print(type(DIGITS))
-    FIRST_LETTER = ord('A')
+    DEC_SYM = ord('A')
     # print(FIRST_LETTER)
     # for i in range(FIRST_LETTER, FIRST_LETTER + BASE - 10):
     #     DIGITS.append(chr(i).upper())
-    DIGITS.extend(chr(i) for i in range(FIRST_LETTER, FIRST_LETTER + BASE - DEC))
+    DIGITS.extend(chr(i) for i in range(DEC_SYM, DEC_SYM - DEC + BASE))
 
 DIGITS = tuple(DIGITS)
 # print(type(DIGITS), DIGITS)
 
-print(f'\nПоследовательность символов (цифр) в данной размерности:')
+# Выводим список цифп
+print(f'\nПоследовательность цифр в данной размерности '
+      f'\n(при вводе чисел используйте только эти символы):')
 for i, digit in enumerate(DIGITS):
-    print(digit, end='  ')
+    print(digit, end='\t')
     if (i + 1) % STEP == 0:
         print()
 # print(', '.join(DIGITS))
+# for i, digit in enumerate(DIGITS):
+#     print(digit, end='   ')
+#     if (i + 1) % STEP == 0:
+#         print()
 
 num_res = deque()
 # print(type(num_res))
 overflow = 0
 
 print()
-num_1  = deque(input('\nВведите первое число в выбранном представлении: ').upper())
-num_2  = deque(input('\nВведите второе число в выбранном представлении: ').upper())
+num_1  = deque(input(f'\nВведите первое {BASE}-ричное число: ').upper())
+num_2  = deque(input(f'\nВведите второе {BASE}-ричное число: ').upper())
 # print(number_1, number_2)
 
-# print(digits.index(num_1[len(num_1) - 1]))
+# print(DIGITS.index(num_1[len(num_1) - 1]))
 
 len_res = max(len(num_1), len(num_2)) + 1
 # вычисление суммы
@@ -49,10 +55,12 @@ for i in range(len_res):
     # добываем последовательно цифры из введённых чисел
     if i < len(num_1):
         dig_1 = num_1[len(num_1) - 1 - i]
+        # print(len(num_1) - 1 - i, dig_1)
     else:
         dig_1 = '0'
     if i < len(num_2):
         dig_2 = num_2[len(num_2) - 1 - i]
+        # print(len(num_2) - 1 - i, dig_2)
     else:
         dig_2 = '0'
     # print(dig_1, dig_2)
