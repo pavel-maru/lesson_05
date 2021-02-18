@@ -33,6 +33,7 @@ for i, digit in enumerate(DIGITS):
     if (i + 1) % STEP == 0:
         print()
 # print(', '.join(DIGITS))
+
 # for i, digit in enumerate(DIGITS):
 #     print(digit, end='   ')
 #     if (i + 1) % STEP == 0:
